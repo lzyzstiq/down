@@ -1,7 +1,7 @@
 name: Download and Send APK via Email
 
 on:
-  workflow_dispatch:   # 手动触发
+  workflow_dispatch:
 
 jobs:
   send:
@@ -16,9 +16,8 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.139.com
-          server_port: 25
+          server_port: 587
           username: lzyzstiq@139.com
-          # ⚠️ 硬编码密码 (极其不安全！)
           password: "@15368291z"
           subject: "MakeACopy APK - v4.0.0"
           to: lzyzstiq@139.com
@@ -28,4 +27,5 @@ jobs:
             This is the requested MakeACopy APK for ARM64-v8a (Paddle edition).
             Please find the attachment.
           attachments: MakeACopy.apk
-          secure: true      # 使用 SSL/TLS
+          starttls: true     # 使用 STARTTLS 升级
+          secure: false      # 显式关闭纯 SSL
