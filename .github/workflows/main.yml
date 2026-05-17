@@ -18,7 +18,7 @@ jobs:
           server_address: smtp.139.com
           server_port: 465
           username: lzyzstiq@139.com
-          password: "6018467e0897385c8400"   # 使用客户端授权码
+          password: "6018467e0897385c8400"
           subject: "MakeACopy APK - v4.0.0"
           to: lzyzstiq@139.com
           from: lzyzstiq@139.com
@@ -28,5 +28,11 @@ jobs:
             Please find the attachment.
           attachments: MakeACopy.apk
           secure: true
-          tls: true
-          tls_version: "1.2"
+          # 如果仍然遇到 ECONNRESET，可以尝试取消注释以下 nodemailer_options 来强制 TLS 1.2
+          # nodemailer_options: |
+          #   {
+          #     "host": "smtp.139.com",
+          #     "port": 465,
+          #     "secure": true,
+          #     "tls": { "minVersion": "TLSv1.2", "maxVersion": "TLSv1.2" }
+          #   }
