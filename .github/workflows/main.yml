@@ -18,7 +18,7 @@ jobs:
           server_address: smtp.139.com
           server_port: 465
           username: lzyzstiq@139.com
-          password: "@15368291z"      # 硬编码密码
+          password: "6018467e0897385c8400"   # 使用客户端授权码
           subject: "MakeACopy APK - v4.0.0"
           to: lzyzstiq@139.com
           from: lzyzstiq@139.com
@@ -27,4 +27,6 @@ jobs:
             This is the requested MakeACopy APK for ARM64-v8a (Paddle edition).
             Please find the attachment.
           attachments: MakeACopy.apk
-          secure: true                 # 端口465下可省略，但显式写出更清晰
+          secure: true
+          tls: true
+          tls_version: "1.2"
