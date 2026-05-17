@@ -1,0 +1,31 @@
+name: Download and Send APK via Email
+
+on:
+  workflow_dispatch:   # 手动触发
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download APK from GitHub Release
+        run: |
+          wget -O MakeACopy.apk \
+            https://github.com/egdels/makeacopy/releases/download/v4.0.0/MakeACopy-v4.0.0-arm64-v8a-paddle-release.apk
+
+      - name: Send email with attachment
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.139.com
+          server_port: 25
+          username: lzyzstiq@139.com
+          # ⚠️ 硬编码密码 (极其不安全！)
+          password: "@15368291z"
+          subject: "MakeACopy APK - v4.0.0"
+          to: lzyzstiq@139.com
+          from: lzyzstiq@139.com
+          body: |
+            Hello,
+            This is the requested MakeACopy APK for ARM64-v8a (Paddle edition).
+            Please find the attachment.
+          attachments: MakeACopy.apk
+          secure: true      # 使用 SSL/TLS
